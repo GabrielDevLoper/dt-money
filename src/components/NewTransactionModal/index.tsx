@@ -1,7 +1,6 @@
 import { useState, FormEvent, useContext } from 'react';
 import Modal from 'react-modal';
 import { TransactionsContext } from '../../context/TransactionContext';
-import { api } from '../../services/api';
 
 import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg';
@@ -23,15 +22,22 @@ export function NewTransactionModal({ handleOpenOrCloseTransactionModal, isNewTr
     const { createTransaction } = useContext(TransactionsContext);
     
 
-    function handleCreateNewTransaction(e: FormEvent){
+    async function handleCreateNewTransaction(e: FormEvent){
         e.preventDefault();
         
-        createTransaction({
+        await createTransaction({
             amount,
             category, 
             title,
             type
         });
+
+        setType('deposit');
+        setTitle('');
+        setAmount(0);
+        setCategory('');
+
+        handleOpenOrCloseTransactionModal();
     }
    
    
