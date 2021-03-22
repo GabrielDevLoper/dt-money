@@ -44,7 +44,7 @@ export function Summary(){
 
             <div className="highlight-background">
                 <header>
-                    <p>Entradas</p>
+                    <p>Total</p>
                     <img src={totalImg} alt="entradas"/>
                 </header>
                 <strong>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(summary.total)}</strong>
