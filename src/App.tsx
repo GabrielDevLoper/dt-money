@@ -6,8 +6,13 @@ import { useState } from 'react';
 import { NewTransactionModal } from "./components/NewTransactionModal";
 import { TransactionProvider } from "./hooks/useTransactions";
 
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+
 //acessibilidade
 Modal.setAppElement('#root');
+
+toast.configure();
 
 export function App() {
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);

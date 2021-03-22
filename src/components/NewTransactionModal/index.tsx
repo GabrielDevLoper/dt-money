@@ -1,6 +1,7 @@
 import { useState, FormEvent } from 'react';
 import Modal from 'react-modal';
 import { useTransactions } from '../../hooks/useTransactions';
+import { toast } from 'react-toastify';
 
 import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg';
@@ -21,7 +22,6 @@ export function NewTransactionModal({ handleOpenOrCloseTransactionModal, isNewTr
 
     const { createTransaction } = useTransactions();
     
-
     async function handleCreateNewTransaction(e: FormEvent){
         e.preventDefault();
         
@@ -38,6 +38,16 @@ export function NewTransactionModal({ handleOpenOrCloseTransactionModal, isNewTr
         setCategory('');
 
         handleOpenOrCloseTransactionModal();
+
+        toast.success('Transação cadastrada com sucesso', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     }
    
    
